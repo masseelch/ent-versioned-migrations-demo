@@ -5,9 +5,10 @@ on:
   push:
     branches:
       - master
+  # Run on PRs where something changed under the `path/to/migration/dir/` directory.
   pull_request:
     paths:
-      - 'ent/migrate/migrations/*'
+      - 'path/to/migration/dir/*'
 jobs:
   lint:
     services:
@@ -16,9 +17,9 @@ jobs:
         image: mysql:8.0.29
         env:
           MYSQL_ROOT_PASSWORD: pass
-          MYSQL_DATABASE: dev
+          MYSQL_DATABASE: test
         ports:
-          - "3306:3306"
+          - "3307:3306"
         options: >-
           --health-cmd "mysqladmin ping -ppass"
           --health-interval 10s
@@ -32,5 +33,7 @@ jobs:
           fetch-depth: 0 # Mandatory unless "latest" is set below.
       - uses: ariga/atlas-action@v0
         with:
-          dir: ent/migrate/migrations
-          dev-url: mysql://root:pass@localhost:3306/dev
+          dir: 'ent/migrate/migrations'
+          dir-format: atlas
+          dev-url: mysql://root:pass@localhost:3307/test
+          ariga-token: ${{ secrets.ARIGA_TOKEN }}
