@@ -24,11 +24,10 @@ jobs:
       - uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0 # Mandatory unless "latest" is set below.
-      - uses: ariga/atlas-action@warn-missconfiguration
+      - uses: ariga/atlas-action@master
         with:
           dir: 'ent/migrate/migrations'
           dir-format: atlas
           dev-url: mysql://root:pass@localhost:3307/test
           ariga-token: ${{ secrets.ARIGA_TOKEN }}_invalid
           ariga-url: https://ci.ariga.dev/
-
