@@ -31,4 +31,3 @@ jobs:
           dev-url: mysql://root:pass@localhost:3307/test
           ariga-token: ${{ secrets.ARIGA_TOKEN }}_invalid
           ariga-url: https://ci.ariga.dev/
-
