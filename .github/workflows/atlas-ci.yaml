@@ -32,3 +32,4 @@ jobs:
           ariga-token: ${{ secrets.ARIGA_TOKEN }}_invalid
           ariga-url: https://ci.ariga.dev/
 
+
