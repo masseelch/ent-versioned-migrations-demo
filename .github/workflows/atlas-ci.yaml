@@ -1,6 +1,6 @@
 name: Atlas CI
 on:
-  pull_request:
+   push:
   
 jobs:
   lint:
@@ -29,7 +29,7 @@ jobs:
           dir: 'ent/migrate/migrations'
           dir-format: atlas
           dev-url: mysql://root:pass@localhost:3307/test
-          ariga-token: ${{ secrets.ARIGA_TOKEN }}_invalid
+          ariga-token: ${{ secrets.ARIGA_TOKEN }}
           ariga-url: https://ci.ariga.dev/
 
 
